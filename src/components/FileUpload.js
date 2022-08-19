@@ -3,22 +3,13 @@ import { Container, Box, Button } from '@mui/material';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { ipfs } from '../helpers/ipfs';
 
-const PUBLIC_GATEWAY_URL = 'https://gateway.pinata.cloud/ipfs/';
+// TODO3: Create a constant for the public gateway URL to retrieve uploaded images from IPFS
 
 const FileUpload = () => {
   const [image, setImage] = useState(null);
 
+  // TODO4: Create a function to upload the image to IPFS and return the hash
   const handleUploadImage = async (event) => {
-    const imgObject = event.target.files[0]
-    imgObject.preview = URL.createObjectURL(event.target.files[0]);
-    setImage(imgObject);
-    try {
-      const ipfsImage = await ipfs.add(imgObject);
-      alert(`Image uploaded! Check image by accessing ${PUBLIC_GATEWAY_URL}${ipfsImage.path}`);
-    } catch (e) {
-      console.error(e);
-    }
-
   };
 
   return (
